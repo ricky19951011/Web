@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td{
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var gamming="0";
+        var flag = "";
+        function myFunction(obj) {
+            
+            if (gamming=="1")
+            {return}
+            if(obj.innerText!="_") {return;}
+            if (flag == "X") {
+
+                obj.innerText = 'O'
+                flag = "O";
+            }
+            else {
+                obj.innerText = 'X';
+                flag = "X";
+            }
+
+            if((c1.innerText=="O"&&c2.innerText=="O"&&c3.innerText=="O")||(c1.innerText=="X"&&c2.innerText=="X"&&c3.innerText=="X")
+            ||(c4.innerText=="O"&&c5.innerText=="O"&&c6.innerText=="O")||(c4.innerText=="X"&&c5.innerText=="X"&&c6.innerText=="X")
+            ||(c7.innerText=="O"&&c8.innerText=="O"&&c9.innerText=="O")||(c7.innerText=="X"&&c8.innerText=="X"&&c9.innerText=="X")
+            ||(c1.innerText=="O"&&c4.innerText=="O"&&c7.innerText=="O")||(c1.innerText=="X"&&c4.innerText=="X"&&c7.innerText=="X")
+            ||(c2.innerText=="O"&&c5.innerText=="O"&&c8.innerText=="O")||(c2.innerText=="X"&&c5.innerText=="X"&&c8.innerText=="X")
+            ||(c3.innerText=="O"&&c6.innerText=="O"&&c9.innerText=="O")||(c3.innerText=="X"&&c6.innerText=="X"&&c9.innerText=="X")
+            ||(c1.innerText=="O"&&c5.innerText=="O"&&c9.innerText=="O")||(c1.innerText=="X"&&c5.innerText=="X"&&c9.innerText=="X")
+            ||(c3.innerText=="O"&&c5.innerText=="O"&&c7.innerText=="O")||(c3.innerText=="X"&&c5.innerText=="X"&&c7.innerText=="X"))
+            {
+                alert("WIN!");
+                gamming ="1";
+                               
+            }
+            else if ((c1.innerText!="_")&&(c2.innerText!="_")&&(c3.innerText!="_")&&(c4.innerText!="_")&&(c5.innerText!="_")
+            &&(c6.innerText!="_")&&(c7.innerText!="_")&&(c8.innerText!="_")&&(c9.innerText!="_"))
+            {
+                alert("ONE MORE TIME?");
+                gamming="2";
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <table id='table1' border="1" style="font-size:60px;">
+
+        <thead>
+
+
+        <tbody>
+            <tr>
+
+                <td id="c1" width=70px height=50px onclick="myFunction(this)">_</td>
+                <td id="c2" width=70px height=50px onclick="myFunction(document.getElementById('c2'))">_</td>
+                <td id="c3" width=70px height=50px onclick="myFunction(document.getElementById('c3'))">_</td>
+            </tr>
+            <tr>
+
+                <td id="c4" width=70px height=50px onclick="myFunction(document.getElementById('c4'))">_</td>
+                <td id="c5" width=70px height=50px onclick="myFunction(document.getElementById('c5'))">_</td>
+                <td id="c6" width=70px height=50px onclick="myFunction(document.getElementById('c6'))">_</td>
+            </tr>
+            <tr>
+
+                <td id="c7" width=70px height=50px onclick="myFunction(document.getElementById('c7'))">_</td>
+                <td id="c8" width=70px height=50px onclick="myFunction(document.getElementById('c8'))">_</td>
+                <td id="c9" width=70px height=50px onclick="myFunction(document.getElementById('c9'))">_</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
