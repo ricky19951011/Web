@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form
+        action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=ricky19951011@gmail.com&redirect=http://www.google.com"
+        method="POST">
+        <fieldset>
+            <legend>個人資料--必填寫</legend>
+            <div>
+                
+                    <label>姓名</label>
+                    <input type="text" value="" id="your name" />
+                
+            </div>
+            <div>
+                <label>password:</label>
+                <input type="password" value="" id="fielPwd" name="fielName" />
+            </div>
+            </div>
+            <div>
+                <label>性別</label>
+                <input type="radio" name="gender" value="男">男生
+                <input type="radio" name="gender" value="女">女生
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>個人資料--興趣和專長</legend>
+            <div>
+                <input type="checkbox" name="hobby" value="音樂">音樂
+                <input type="checkbox" name="hobby" value="運動">運動
+                <input type="checkbox" name="hobby" value="閱讀">閱讀
+                <input type="checkbox" name="hobby" value="吃">吃
+            </div>
+            <label>專長</label>
+            <textarea id="fieldMultiLineText" cols="40" rows="4">
+
+        </textarea>
+        </fieldset>
+        <fieldset>
+            <legend>個人資料--地址</legend>
+            <div>
+                
+                    <label>郵遞區號</label>
+                    <input type="text" value="EX:320" id="your mailnum" />
+                
+                <label>縣市</label>
+                <select name="LivingIn">
+
+                    <option value="台北市" selected>台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="台中市">台中市</option>
+                </select>
+                
+                    <label>地址</label>
+                    <input type="text" value="地址" id="your address" />
+                    <br>
+                    <button type="submit" value="submit">送出</button>
+                    <button type="reset" >清除</button>
+                </form>
+            </div>
+        </fieldset>
+        <div>
+
+</body>
+
+</html>
