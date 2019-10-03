@@ -1,0 +1,60 @@
+.topbar{
+    background-color:red; 
+    width: 100%; 
+    height: 25px;
+}
+.topbar ul{
+    margin:0;
+}
+.topbar li{
+    float: left;
+}
+
+.flex-wrapper {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    border: white 20px solid;
+  }
+  
+  .item {
+    border: white 1px solid;
+    flex-grow:1;
+  }
+  .Container{
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .a {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border: white 10px solid;
+    height: 150px;
+    order: 8; 
+  }
+  .productList{
+      height: 220px;
+    flex-grow:1;
+    display:flex;
+    flex-direction:row;
+  }
+  .product{
+    
+    flex-grow:1;
+  }
+  .FruitSale
+  {
+    height: 200px;
+    flex-grow:1;
+    display:flex;
+    flex-direction:row;
+  }
+  .Fruit
+  {
+    
+    flex-grow:1;
+  }
+
+  
