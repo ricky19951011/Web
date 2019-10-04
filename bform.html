@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        個人資料--必填寫
+                    </div>
+                    <div class="card-body">
+
+                        <div>
+
+                            <label>姓名</label>
+                            <input type="text" class="form-control" value="" id="your name" name="name input" />
+
+                        </div>
+                        <div>
+                            <label>password:</label>
+                            <input type="password" class="form-control" value="" id="fielPwd" name="password input" />
+                        </div>
+                    </div>
+                    <div>
+                        <label>性別</label>
+                        <input type="radio" name="gender" value="男">男生
+                        <input type="radio" name="gender" value="女">女生
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                            個人資料--興趣和專長
+                    </div>
+                    <div class="card-body">
+                        
+                        <div>
+                            <input type="checkbox" name="hobby" value="音樂">音樂
+                            <input type="checkbox" name="hobby" value="運動">運動
+                            <input type="checkbox" name="hobby" value="閱讀">閱讀
+                            <input type="checkbox" name="hobby" value="吃">吃
+                        </div>
+                        <label>專長</label>
+                        <textarea id="fieldMultiLineText" class="form-control" cols="40" rows="4" name="專長">
+
+                            </textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        個人資料--地址
+                    </div>
+                    <div class="card-body">
+
+                        
+                        <div>
+
+                            <label>郵遞區號</label>
+                            <input type="text" value="" id="your mailnum"class="form-control" name="mailnum" placeholder="EX:320" /><br>
+
+                            <label>縣市</label>
+                            <select name="LivingIn">
+
+                                <option value="台北市" selected>台北市</option>
+                                <option value="新北市">新北市</option>
+                                <option value="桃園市">桃園市</option>
+                                <option value="台中市">台中市</option>
+                            </select><br>
+
+                            <label>地址</label>
+                            
+                            <input type="text" value="" id="your address"class="form-control" name="地址" placeholder="請輸入地址" />
+                            <br>
+                            <input type="checkbox" value="同意" id="MustCheck" name="同意" />
+                            <label>是否同意使用個資</label>
+                            <br>
+
+                            <button type="submit" class="btn btn-primary" value="submit">送出</button>
+                            <button type="reset" class="btn btn-primary">清除</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
