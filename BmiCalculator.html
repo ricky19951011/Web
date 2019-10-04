@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +8,36 @@
     <title>Document</title>
     <script>
         function myFunction() {
-            var height = (document.getElementById('height').value)/100;
+            var height = (document.getElementById('height').value) / 100;
             var weight = document.getElementById('weight').value;
-           
+
             var BMI = 0;
-            BMI = weight  / (height*height);
+            BMI = weight / (height * height);
             document.getElementById('BMI').innerHTML = BMI;
         }
- 
+
     </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
- 
+
 <body>
-    <div>身高:</div>
-    <input type="text" id="height" placeholder="請輸入身高"><br>
-    <div>體重:</div>
-    <input type="text" id="weight" placeholder="請輸入體重"><br>
-    <div>結果:<span id="BMI"></span></div>
-    <button type="submit" onclick="myFunction()">計算</button>
- 
+
+
+    </div>
+    <div class="Container"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div>身高:</div>
+            <input type="text" id="height" class="form-control" placeholder="請輸入身高"><br>
+            <div>體重:</div>
+            <input type="text" id="weight" class="form-control" placeholder="請輸入體重"><br>
+            <div>結果:<span id="BMI"></span></div>
+            <button type="button" class="btn btn-primary" onclick="myFunction()">計算</button>
+        </div>
+        
+    </div>
+    </div>
 </body>
- 
+
 </html>
