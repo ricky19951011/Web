@@ -21,17 +21,91 @@
 
         $(document).ready(function () {
             $('#Button1').click(function () {
-                var height = $('#textHeight').val()/100;
+                var height = $('#textHeight').val() / 100;
                 var weight = $('#textWeight').val();
                 var BMI
-                 = weight / (height * height);
+                    = weight / (height * height);
                 $('#BMI').html(BMI);
+                //$('#BMI').after("<span style='color:red'>"+bmi+"</span>")
+                $('#textResult').val(BMI);
+
+
 
             });
         });
 
 
     </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#CheckAll").click(function () {
+                if ($("#CheckAll").prop("checked")) {//如果全選按鈕有被選擇的話（被選擇是true）
+                    $("#CheckBoxGroup input").each(function () {
+                        $(this).prop("checked", true);//把所有的核取方框的property都變成勾選
+                    })
+                } else {
+                    $("#CheckBoxGroup input").each(function () {
+                        $(this).prop("checked", false);//把所有的核方框的property都取消勾選
+                    })
+                }
+            })
+        })
+    </script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#sel01').change(sel01_change);
+        });
+        function sel01_change() {
+            var val = $(this).val();
+            $('#ImgGroup2 img').removeClass();
+            $('#ImgGroup2 img').addClass(val);
+
+        }
+
+
+
+    </script>
+    <style>
+        image {
+            padding: 20px 20px;
+            background-color: black;
+        }
+
+        .br15 {
+            border-radius: 15px;
+        }
+
+        .br30 {
+            border-radius: 30px;
+        }
+
+        .br50 {
+            border-radius: 50px;
+        }
+    </style>
+    <script>
+            function init() {
+                $('img').hover(function () {
+                        $(this).css('cursor','pointer')
+                        $(this).css('transform','scale(1.1)')
+                        $(this).css('transition-duration','0.1s')
+                    }, function () {
+                        $(this).css('cursor','context-menu')
+                        $(this).css('transform','scale(1)')
+                        $(this).css('transition-duration','0.1s')
+                    }
+                )
+            }
+            $(() => {init()})
+        </script>
+
+
+
 </head>
 
 <body>
@@ -45,9 +119,64 @@
             <label>體重:</label>
             <input class="form-control" id="textWeight" value="" placeholder="請輸入體重" />
             <br />
+            <label>result:</label>
+            <input class="form-control" id="textResult" value="" />
+            <br />
             <button class="btn btn-primary" id="Button1">計算</button>
             <br />
             <span id="BMI"></span>
+        </div>
+    </div>
+
+    <form id="form1" name="form1" method="post" action="">
+        <p>
+            <label>
+                <input type="checkbox" name="CheckAll" value="核取方塊" id="CheckAll" />
+                全選以下</label>
+            <br />
+
+        </p>
+        <div class="row" style="margin:10px">
+            <div class="col-12">
+
+                <div id="CheckBoxGroup">
+                    <input type="checkbox" />項目1
+                    <input type="checkbox" />項目2
+                    <input type="checkbox" />項目3
+                    <input type="checkbox" />項目4
+                    <input type="checkbox" />項目5
+                    <input type="checkbox" />項目6
+                    <input type="checkbox" />項目7
+                    <input type="checkbox" />項目8
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+    <div id="ImgGroup2" class="row" style="margin:10px; padding-top:100px">
+        <div class="col-12">
+            <select id="sel01">
+                <option value="br15">15px</option>
+                <option value="br30">30px</option>
+                <option value="br50">50px</option>
+            </select>
+        </div>
+
+        <div class="col-4">
+            <img src="https://pic.pimg.tw/pk19870730/1436362642-3674765222_n.jpg" style="width:100%"
+                class="img-responsive" />
+        </div>
+        <div class="col-4">
+            <img src="https://pic.pimg.tw/pk19870730/1436362642-3674765222_n.jpg" style="width:100%"
+                class="img-responsive" />
+        </div>
+        <div class="col-4">
+            <img src="https://pic.pimg.tw/pk19870730/1436362642-3674765222_n.jpg" style="width:100%"
+                class="img-responsive" />
         </div>
     </div>
 </body>
