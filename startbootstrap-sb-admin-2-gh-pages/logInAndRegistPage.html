@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+            //抓取頁面元素
+            function GetElement(name) {
+                return document.getElementById(name);
+            }
+            //判斷
+            function ButtonSubmit() {
+                //抓取頁面上的checkboc1，取得是否checked
+                var isChecked = GetElement('agreePri').checked;
+                //如果是，就return true
+                if (isChecked) return true;
+                $('#myModal').modal();
+                return false;
+            }
+            //當網頁載入完成後執行
+            window.onload = function () {
+                //hook event(在form1被submit時...)
+                GetElement('form1').onsubmit = function () {
+                    //呼叫 Button_Submit() 
+                    return ButtonSubmit();
+                };
+            };
+        </script>
+    
+</head>
+
+<body>
+        <form id="form1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            登入系統
+                            
+                            <button type="submit"id="btn1" class="btn btn-primary" value="submit" style="margin-left: 300px"
+                            onclick=" window.open('https://frontend0824.azurewebsites.net/RegistPage.html')">註冊
+                                </button>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset>
+
+                                        <div>
+                                                <br><label>帳號</label><br>
+                                                <input type="text"class="form-control" value="" id="your account" name="帳號"
+                                                    placeholder="請輸入帳號" />
+                                                
+
+
+
+                                            <br><label>密碼</label>
+                                            <input type="text"class="form-control" value="" id="your password" name="密碼"
+                                                placeholder="請輸入密碼" />
+                                            <br>
+                                            <input type="checkbox" value="同意" id="agreePri" name="同意" />
+                                            <label>勾選我同意本系統使用條款</label>
+                                            <br>
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                    登入
+                                                  </button>
+                                                
+                                                  <!-- The Modal -->
+                                                  <div class="modal fade" id="myModal">
+                                                    <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                      
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                          <h4 class="modal-title">請勾選同意</h4>
+                                                          <button type="button"id="btn2" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                          請勾選同意
+                                                        </div>
+                                                        
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+
+                </div>
+            </div>
+    </form>
+</body>
+
+</html>
