@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        //getElementById(抓取頁面上的元素)
+        function getElement(name) {
+            return document.getElementById(name);
+        }
+
+        //判斷是否可以送件
+        function Button_Submit() {
+            //抓取頁面上的checkboc1，取得是否checked
+            var isChecked = getElement('MustCheck').checked;
+            //如果是，就return true
+            if (isChecked) return true;
+            //否則就... 
+
+            return false;
+        }
+
+        //當網頁載入完成後執行
+        window.onload = function () {
+            //hook event(在form1被submit時...)
+            getElement('form1').onsubmit = function () {
+                //呼叫 Button_Submit()
+                return Button_Submit();
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <form id="form1"
+        action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=ricky19951011@gmail.com&redirect=http://www.google.com"
+        method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            登入系統
+
+
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset>
+
+                                        <div>
+                                            <br><label>帳號</label>
+                                            <input type="text" class="form-control" value="" id="your account"
+                                                placeholder="請輸入帳號" />
+                                            <br><label>密碼</label>
+                                            <input type="text" class="form-control" value="" id="your password"
+                                                placeholder="請輸入密碼" />
+                                            <br><label>確認密碼</label>
+                                            <input type="text" class="form-control" value="" id="check password"
+                                                placeholder="請輸入密碼" />
+                                            <br><label>email</label>
+                                            <input type="text" class="form-control" value="" id="your email"
+                                                placeholder="請輸入email" />
+                                            <br><label>生日</label>
+                                            <input type="text" class="form-control" value="" id="your birthday"
+                                                placeholder="請輸入生日" />
+                                            <br><label>學校/公司</label>
+                                            <input type="text" class="form-control" value="" id="your school"
+                                                placeholder="學校/公司" />
+                                            <input type="checkbox" value="同意" id="MustCheck" name="同意" />
+                                            <label>勾選我同意本系統使用條款</label>
+                                            <br>
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myModal">
+                                                註冊
+                                            </button>
+
+
+
+
+
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+
+
+                </div>
+            </div>
+    </form>
+</body>
+
+</html>
