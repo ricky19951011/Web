@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒數計時器</title>
+
+    <!-- bootstrap 4.3.1 -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        @font-face {
+            font-family: "Cursed Timer ULiL font";
+            src: url('test19_font/digital-7(mono).ttf');
+        }
+
+        #inputTime {
+            font-family: "Cursed Timer ULiL font";
+            font-size: 30px;
+        }
+    </style>
+
+    <script>
+
+        var counter;
+        function timeCounter() {
+
+            if ($("#inputTime").val() > 0) {
+                $("#inputTime").val($("#inputTime").val() - 1);
+                counter = setTimeout(timeCounter, 1000);
+            } else if ($("#inputTime").val() == 0) {
+                $('#myModal').modal();
+                clearTimeout(counter);
+            }
+        }
+        $(function () {
+
+            $("#Start").click(function () {
+                timeCounter();
+            });
+            $("#Stop").click(function () {
+                clearTimeout(counter);
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>COUNTDOWN</div>
+    <div>
+        <p><input type="text" value="" id="inputTime" placeholder="輸入秒數"></p>
+        <p>
+            <button id="Start">START</button>
+            <button id="Stop">PAUSE</button>
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">DONE</div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal">END</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p>
+    </div>
+    </div>
+</body>
+
+</html>
