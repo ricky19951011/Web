@@ -12,21 +12,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <style>
-        @font-face {
-            font-family: "Cursed Timer ULiL font";
-            src: url('test19_font/digital-7(mono).ttf');
-        }
-
-        #inputTime {
-            font-family: "Cursed Timer ULiL font";
-            font-size: 30px;
-        }
-    </style>
-
     <script>
-
         var counter;
         function timeCounter() {
 
@@ -47,20 +33,16 @@
                 clearTimeout(counter);
             });
         });
-
     </script>
-
 </head>
 
 <body>
-
     <div>COUNTDOWN</div>
     <div>
         <p><input type="text" value="" id="inputTime" placeholder="輸入秒數"></p>
         <p>
             <button id="Start">START</button>
             <button id="Stop">PAUSE</button>
-
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
