@@ -15,11 +15,15 @@
     <!-- https://datatables.net/ -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <!-- https://cdnjs.com/libraries/jquery-tagsinput -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
 
     <script>
         //預設資料
         var dat = [
-            ['Eric', '0912345678', '1980/1/1', 'eric@gmail.com', '台北市光復南路179號13樓'],
+            ['Eric', '0912345678', '1980/1/1', 'eric@gmail.com', '台北市光復南路179號13樓','TAG'],
         ];
         function ButtonSearch() {
         }
@@ -30,7 +34,8 @@
                 $('#field_Birthday').val(),
                 $('#field_TEL').val(),
                 $('#field_Email').val(),
-                $('#field_Address').val()
+                $('#field_Address').val(),
+                $('#field_Tag').val()
             ];
             dat.push(item);
             //儲存
@@ -41,6 +46,7 @@
             $('#field_TEL').val('');
             $('#field_Email').val('');
             $('#field_Address').val('');
+            $('#field_Tag').importTags('')
             LoadData();
         }
         function ButtonShowAddNewWindow() {
@@ -85,12 +91,14 @@
                     $('#EditField_Birthday').val(),
                     $('#EditField_TEL').val(),
                     $('#EditField_Email').val(),
-                    $('#EditField_Address').val()
+                    $('#EditField_Address').val(),
+                    $('#EditField_Tag').importTags()
                 ];
             //找到當前筆數
             var n = dat.indexOf(CurrentEditItem);
             //置換
             dat[n] = NewItem;
+            
             //refresh data table
             refreshData();
         }
@@ -119,6 +127,12 @@
         }
         $(document).ready(function () {
             //data table init
+
+            $('#EditField_Tag').tagsInput();
+            $('#field_Tag').tagsInput();
+
+            
+
             DataTable = $('#Table1').DataTable({
                 data: dat
             });
@@ -141,6 +155,7 @@
                 $('#EditField_TEL').val(CurrentEditItem[2]);
                 $('#EditField_Email').val(CurrentEditItem[3]);
                 $('#EditField_Address').val(CurrentEditItem[4]);
+                $('#EditField_Tag').importTags(CurrentEditItem[5]);
             });
             //load data from storage
             LoadData();
@@ -165,7 +180,7 @@
         </ul>
 
         <form style="margin-left: 10px" class="form-inline " action="/action_page.php">
-            <input class="form-control mr-sm-2" type="text" placeholder="輸入搜尋文字"">
+            <input class="form-control mr-sm-2" type="text" placeholder="輸入搜尋文字">
             <button class=" btn btn-success" id="ButtonSearch" type="submit">搜尋</button>
         </form>
     </nav>
@@ -180,6 +195,7 @@
                             <th>電話</th>
                             <th>email</th>
                             <th>地址</th>
+                            <th>TAG</th>
                         </tr>
                     </thead>
                     <!-- <tbody>
@@ -217,6 +233,8 @@
                         <input id="field_Email" type="email" class="form-control" />
                         <label>地址</label>
                         <input id="field_Address" type="address" class="form-control" />
+                        <label>TAG</label>
+                        <input id="field_Tag"type="text"class="form-control" value="" data-role="tagsinput" />
                     </form>
                 </div>
                 <!-- Modal footer -->
@@ -249,6 +267,8 @@
                         <input id="EditField_Email" type="email" class="form-control" />
                         <label>地址</label>
                         <input id="EditField_Address" type="address" class="form-control" />
+                        <label>TAG</label>
+                        <input id="EditField_Tag" type="text"class="form-control" value="" data-role="tagsinput" />
                     </form>
                 </div>
                 <!-- Modal footer -->
