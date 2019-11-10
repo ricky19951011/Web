@@ -58,6 +58,10 @@
             $(".PicCell").click(DivToMove);
             $("input:button").click(PuzzleButton);
         }
+        function ReWeb()
+        {
+            window.location.reload("https://frontend0824.azurewebsites.net/Puzzle1.html")
+        }
         function DivToMove() {
             let cells = $("#MainPuzzle div");
             let i = cells.index(this);
@@ -160,7 +164,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">QUIT</button>
+                    <button onclick="ReWeb()" type="button" class="btn btn-info" data-dismiss="modal">QUIT</button>
                 </div>
             </div>
         </div>
