@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-Hart-TW">
+
+<head>
+    <title>Puzzle1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        #MainPuzzle { 
+            width: 490px;
+            height: 490px;
+            border: solid 5px rgb(79, 171, 224);
+            padding: 0px;
+        }
+        .PicCell {
+            border-top: solid 1px white;
+            border-left: solid 1px white;
+            border-right: solid 1px gray;
+            border-bottom: solid 1px gray;
+            float: left;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        var posConv = {};
+        var Size;
+        var Level = 2;
+        var temppos = [];
+        var saveLost;
+        var puzzlecheck;
+        $(function () {
+            RePuzzle(Level);
+            $('#inputLevel').change(function (e) {
+                Level = $('#inputLevel').val();
+                RePuzzle(Level);
+            });
+        });
+        function RePuzzle(lv) {
+            $('#MainPuzzle .PicCell').remove();
+            for (let i = 0; i < lv * lv; i++) {
+                Size = 480 / lv;
+                $("#MainPuzzle").append(`
+                <div class='PicCell' id='Pic${i}' style="width:${Size}px;height:${Size}px;">
+                <img width="480px" height="480px" src='http://www.discobelle.net/wp-content/uploads/2009/07/shapiro-480x480.jpg'>
+                </div>`);
+                let row = parseInt(i / lv);
+                let col = i % lv;
+                $(`#Pic${i} img`).css("margin-left", col * -Size).css("margin-top", row * -Size);
+                posConv[i] = { row: row, col: col };
+                temppos[i] = `Pic${i}`;
+            }
+            saveLost = $(`#Pic${Level * Level - 1} img`);
+            $(`#Pic${Level * Level - 1} img`).remove();
+            $(".PicCell").click(DivToMove);
+            $("input:button").click(PuzzleButton);
+        }
+        function DivToMove() {
+            let cells = $("#MainPuzzle div");
+            let i = cells.index(this);
+            let toCheck = getNearPos(i, Level);
+            while (toCheck.length > 0) {
+                let j = toCheck.pop();
+                if (cells.eq(j).attr("id") == `Pic${Level * Level - 1}`) {
+                    if (i > j) { let k = j; j = i; i = k; }
+                    let ahead = cells.eq(i);
+                    let behind = cells.eq(j);
+                    let behindPrev = behind.prev();
+                    if (Math.abs(i - j) == 1)
+                        behind.after(ahead);
+                    else {
+                        ahead.after(behind);
+                        behindPrev.after(ahead);
+                    }
+                }
+            }
+            if (puzzlecheck) {
+                checkfinish();
+            }
+        }
+        function getNearPos(i, lv) {
+            let pool = [];
+            let row = posConv[i].row, col = posConv[i].col;
+
+            if (row > 0)
+                pool.push((row - 1) * lv + col);
+            if (row < lv - 1)
+                pool.push((row + 1) * lv + col);
+            if (col > 0)
+                pool.push(i - 1);
+            if (col < lv - 1)
+                pool.push(i + 1);
+
+            return pool;
+        }
+        function PuzzleButton() {
+            puzzlecheck = false;
+            for (let i = 0; i < 500; i++) {
+                let cells = $("#MainPuzzle div");
+                let toMove = getNearPos(cells.index($(`#Pic${Level * Level - 1}`)[0]), Level);
+                cells.eq(toMove[parseInt(Math.random() * toMove.length)]).click();
+            }
+            puzzlecheck = true;
+        }
+        function checkfinish() {
+            let check = [];
+            for (let i = 0; i < $('.PicCell').length; i++) {
+                check.push($('.PicCell')[i]['id']);
+            }
+
+
+            if (check.toString() == temppos.toString()) {
+                $('#modal').modal();
+                $(".PicCell").off("click");
+                $("input:button").off("click");
+                $(`#Pic${Level * Level - 1}`).append(saveLost);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <span class="label ">LEVELS</span>
+                <select name="Level" id="inputLevel" class="form-control  ">
+                    <option value="2" selected>LEVEL1 2x2</option>
+                    <option value="3">LEVEL2 3x3</option>
+                    <option value="4">LEVEL3 4x4</option>
+                    <option value="5">LEVEL4 5x5</option>
+                </select>
+                <input name="gameready" id="gameready" class="btn btn-info  my-2" type="button" value="START">
+            </div>
+
+            <div class="col-md-6">
+                <img src="" alt="" sizes="600" srcset="">
+
+                <div class="MainPuzzle container-fluid" id="MainPuzzle"></div>
+            </div>
+            <div class="col-md-3">
+                Answer
+                <img width="240px" height="240px"
+                    src='http://www.discobelle.net/wp-content/uploads/2009/07/shapiro-480x480.jpg'>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span>FINISH</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">QUIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
