@@ -22,10 +22,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
     <style>
-        td {
-            width: 100px;
-            height: 80px;
-        }
+        td {width: 100px;height: 80px;}
     </style>
     <script>
         var today = new Date();
@@ -33,19 +30,18 @@
         var year = today.getFullYear();
         var FirstDay;
         var LastDay;
-        function BottonToGeTNewCalender() {
+        function GetNew() {
             $('#AddnewCalender').click(function (e) {
                 year = $('#Field_Year').val();
                 month = $('#Newmonth').val();
-
-                cleantable();
+                CleanTable();
                 currentMonth();
             });
         }
 
         function LastMonth() {
             $('#lastMon').click(function (e) {
-                cleantable();
+                CleanTable();
                 if (month > 1) {
                     month -= 1;
                 } else {
@@ -55,9 +51,10 @@
                 currentMonth();
             });
         }
+
         function NextMonth() {
             $('#nextMon').click(function (e) {
-                cleantable();
+                CleanTable();
 
                 if (month < 12) {
                     month -= (-1);
@@ -68,16 +65,14 @@
                 currentMonth();
             });
         }
-        function importCalendar(FirstDay, LastDay) {
 
+        function inportDate(FirstDay, LastDay) {
             var times = FirstDay.getDay();
-            console.log('1', times)
             var tableRow = "<tr>";
             for (var p = 0; p < times; p++) {
                 tableRow += "<td >" + "</td>";
             }
             for (var y = 1; y < LastDay.getDate() + 1; y++) {
-                console.log('2', times)
                 if (times == 6) {
 
                     times = 0;
@@ -89,26 +84,28 @@
                     tableRow += "<td >" + y + "</td>";
                 }
             }
-            console.log('tableRow is', tableRow);
-
             $('#tablebody').append(tableRow)
         }
-        function cleantable() {
+
+        function CleanTable() {
             $('#tablebody').html('');
 
         }
+
         function showMonth(yyyy, MM) {
-            $('#showmonth').html(yyyy + '年' + MM + '月');
+            $('#ShowYYMM').html(yyyy + '年' + MM + '月');
         }
+
         function currentMonth() {
             FirstDay = new Date(year, month - 1, 1)
             LastDay = new Date(year, month, 0)
-            importCalendar(FirstDay, LastDay);
+            inportDate(FirstDay, LastDay);
             showMonth(year, month)
         }
+        
         $(document).ready(function () {
             currentMonth();
-            BottonToGeTNewCalender();
+            GetNew();
             NextMonth();
             LastMonth();
         });
@@ -121,65 +118,29 @@
         <div>
             <div>
                 <table class="table table-bordered" id="table1">
-                    <tr class="table-dbtn-dark">
+                    <div>
                         <th colspan="7" style="text-align: center;">Calender</th>
-                    </tr>
+                    </div>
                     <tr>
                         <td colspan="7">
                             <button class="btn btn-dark" id="lastMon">PRE</button>
                             <button class="btn btn-dark" id="nextMon">NEXT</button>
 
 
-                            <a id="showmonth" style="text-align: center;"></a>
+                            <a id="ShowYYMM" style="text-align: center;"></a>
                         </td>
                     </tr>
                     <tr style="text-align: center;">
-                        <td>Sun</td>
-                        <td>Mon</td>
-                        <td>Tues</td>
-                        <td>Wed</td>
-                        <td>Thur</td>
-                        <td>Fir</td>
-                        <td>Sat</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">SUN</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">MON</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">TUE</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">WED</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">THU</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">FRI</td>
+                        <td style="border:5px rgb(11, 69, 124) solid;">SAT</td>
                     </tr>
-                    <tbody id="tablebody">
-
-                    </tbody>
-
+                    <tbody id="tablebody"></tbody>                   
                 </table>
-            </div>
-        </div>
-
-    </div> <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <div class="modal" id="NewCalenderModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                </div>
-                <div class="modal-body">
-                    <input type="text" id="Field_Year">
-                    <label>Year</label>
-                    <select name="month" id="Newmonth">
-                        <option value="1">Mon</option>
-                        <option value="2">Feb</option>
-                        <option value="3">Mar</option>
-                        <option value="4">Apr</option>
-                        <option value="5">May</option>
-                        <option value="6">Jun</option>
-                        <option value="7">July</option>
-                        <option value="8">Aug</option>
-                        <option value="9">Sep</option>
-                        <option value="10">Oct</option>
-                        <option value="11">Nov</option>
-                        <option value="12">Dec</option>
-                    </select><label>Month </label>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-dark" id="AddnewCalender">AddnewCalender</button>
-                </div>
             </div>
         </div>
     </div>
