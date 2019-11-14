@@ -1,0 +1,89 @@
+<!DOCTYPEhtml>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>oxgetwin</title>
+        <style>
+            td {
+                text-align: center;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            class OOXX {
+                constructor() {
+                    this.data = []
+                    this.data[0] = ['7', '8', '9']
+                    this.data[1] = ['4', '5', '6']
+                    this.data[2] = ['1', '2', '3']
+                }
+                setPoint(x, y, point) {
+                    this.data[x][y] = point
+                }
+                HasWinner() {
+                    if (this.data[0][0] == this.data[1][1] && this.data[2][2] == this.data[1][1]) {
+                        return this.data[0][0]
+                    } else if (this.data[2][0] == this.data[1][1] && this.data[0][2] == this.data[1][1]) {
+                        return this.data[2][0]
+                    }
+                    for (let i = 0; i < 3; i++) {
+                        if (this.data[i][0] == this.data[i][1] && this.data[i][1] == this.data[i][2]) {
+                            return this.data[i][0]
+                        } else if (this.data[0][i] == this.data[1][i] && this.data[1][i] == this.data[2][i]) {
+                            return this.data[0][i]
+                        }
+                    }
+                    return '';
+                }
+            }
+
+            var flag = "";
+            var game = new OOXX();
+
+            function SetPoint(obj) {
+                if (obj.innerText != "_") return;
+                if (flag == "X") {
+                    flag = "O";
+                    obj.innerText = 'O';
+                } else {
+                    flag = "X";
+                    obj.innerText = 'X';
+                }
+                var label = document.getElementById('lebel1');
+                label.innerHTML = "rowIndex: " + obj.parentElement.rowIndex + " CellIndex: " + obj.cellIndex +
+                    " --> " +
+                    obj.innerText;
+                game.setPoint(obj.parentElement.rowIndex, obj.cellIndex, obj.innerText);
+                if (game.HasWinner() != '') label.innerHTML =
+                    `<span style='color:red'>winner : ${game.HasWinner()}</span>`;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h3>OOXX</h3>
+        <div style="font-size: 80px">
+            <table border="1" style="width: 400px; height:300px">
+                <tr>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                </tr>
+                <tr>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                </tr>
+                <tr>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                    <td onclick="SetPoint(this);">_</td>
+                </tr>
+            </table>
+        </div>
+        <label id=lebel1>desc:</label>
+
+    </body>
+
+    </html>
