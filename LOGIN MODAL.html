@@ -55,7 +55,7 @@
       /* Center the image and position the close button */
       .imgcontainer {
         text-align: center;
-        margin: 24px 0 12px 0;
+        margin: 24px 0;
         position: relative;
       }
 
@@ -102,12 +102,12 @@
         margin: 0% auto 10% auto;
         /* 5% from the top, 15% from the bottom and centered */
         border: 1px solid #888;
-        width: 570px;
-        height: 530px ;
-        padding: 75px 150px;
+        width:570px;
+        height: 530px;
+        /* padding: 75px 150px; */
         overflow: auto;
-        padding: 2.25rem;
-        /* Could be more or less, depending on screen size */
+       /* padding: 2.25rem;  */
+   
       }
 
       /* The Close Button (x) */
@@ -161,7 +161,7 @@
           float: none;
         }
 
-        
+
       }
 
       .over {
@@ -183,39 +183,50 @@
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close"
           title="Close Modal">&times;</span>
-
       </div>
 
-      <div class="container">
-        <center><label for="uname"style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:24px; line-height: 1 "><b>Sign In</b></label>
-        <br />
-        <br />
-        <center><label for="uname"style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Email Address</b></label>
-          <br />
-          <center><input type="text" placeholder="Enter Username" name="uname" required>
-            <br />
-            <center><label for="psw"style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Password</b></label>
-              <br />
-              <center><input type="password" placeholder="Enter Password" name="psw" required>
-                <br />
-                <br />
-
-
-                <center><button type="submit" onMouseOver="this.className='over' ;" onMouseOut="this.className='';"
-                    style="border-color:Black;border-width:3px;border-style:solid;">Login </button>
+      <div class="container" style="padding: 70px;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <label for="uname"
+                    style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:24px; line-height: 1 "><b>Sign
+                      In</b></label>
                   <br />
                   <br />
+                  <label for="uname"
+                      style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Email
+                        Address</b></label>
+                    <br />
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                      <br />
+                      <label for="psw"
+                          style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Password</b></label>
+                        <br />
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                          <br />
+                          <br />
+      
+      
+                          <button type="submit" onMouseOver="this.className='over' ;" onMouseOut="this.className='';"
+                              style="border-color:Black;border-width:3px;border-style:solid;">Login </button>
+                            <br />
+                            <br />
+      
+                            <button type="submit" onMouseOver="this.className='over';" onMouseOut="this.className='';"
+                                style="border-color:Black;border-width:3px;border-style:solid;">Register</button>
+                              <br />
+      
+      
+                              <label for="psw"
+                                style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Forget
+                                  your Password?</b></label>
+      
+                              </label>
+              </div>
 
-                  <center><button type="submit" onMouseOver="this.className='over';" onMouseOut="this.className='';"
-                      style="border-color:Black;border-width:3px;border-style:solid;">Register</button>
-                    <br/>
-
-
-                      <label for="psw"style="font-family: Open Sans,Arial,Helvetica,sans-serif; font-size:12px; line-height: 1"><b>Forget your Password?</b></label>
-
-                    </label>
+        </div>
+      
       </div>
-
 
     </form>
   </div>
